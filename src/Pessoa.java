@@ -2,18 +2,18 @@
 public abstract class Pessoa {
 	
 	private String nome;
-	private int senha;
+	private String senha;
 	
 	public Pessoa() {
 		
 	}
 	
-	public Pessoa(String nome, int senha) {
+	public Pessoa(String nome, String senha) {
 		this.nome = nome;
 		this.senha = senha;
 	}
 	
-	public int getSenha() {
+	public String getSenha() {
 		return senha;
 	}
 	

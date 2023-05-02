@@ -2,19 +2,19 @@
 public abstract class Pessoa {
 	
 	private String nome;
-	private String senha;
+	private String protocolo;
 	
 	public Pessoa() {
 		
 	}
 	
-	public Pessoa(String nome, String senha) {
+	public Pessoa(String nome, String protocolo) {
 		this.nome = nome;
-		this.senha = senha;
+		this.protocolo = protocolo;
 	}
 	
-	public String getSenha() {
-		return senha;
+	public String getProtocolo() {
+		return protocolo;
 	}
 	
 	public String getNome() {

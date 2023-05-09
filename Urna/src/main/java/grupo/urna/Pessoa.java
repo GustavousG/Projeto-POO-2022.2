@@ -1,32 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package grupo.urna;
 
-/**
- *
- * @author vitic
- */
+
 public abstract class Pessoa {
 	
+        private int id;
 	private String nome;
 	private String protocolo;
+        private String voto;
 	
 	public Pessoa() {
 		
 	}	
-	public Pessoa(String nome, String protocolo) {
+	public Pessoa(int id,String nome, String protocolo, String voto) {
+                this.id= id;
 		this.nome = nome;
 		this.protocolo = protocolo;
+                this.voto = voto;
 	}
-        
-	public String getProtocolo() {
-		return protocolo;
-	}
-	
-	public String getNome() {
-		return nome;
-	}
-	
-}
+        public String getVoto(){
+            return voto;
+        }
+        public int getId(){
+                return id;
+        }

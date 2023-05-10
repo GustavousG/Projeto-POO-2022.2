@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package grupo.urna;
 
 /**
@@ -11,8 +7,8 @@ package grupo.urna;
 public class PessoaJuridica extends Pessoa implements Autenticacao{
 	private String cnpj;
 	
-        public PessoaJuridica (String cnpj, String nome, String protocolo){
-            super(nome,protocolo);
+        public PessoaJuridica (int id, String nome, String protocolo,String cnpj, String voto){
+            super(id,nome,protocolo, voto);
             this.cnpj = cnpj;
         }
         public String getCnpj() {
@@ -27,5 +23,6 @@ public class PessoaJuridica extends Pessoa implements Autenticacao{
 		// TODO Auto-generated method stub
 		return false;
 	}
+        
 
 }

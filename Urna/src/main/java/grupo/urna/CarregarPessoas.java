@@ -15,10 +15,10 @@ public class CarregarPessoas {
             while (linha != null) {
                 String[] campos = linha.split(";");
                 if (campos[0].equals("0")) {
-                    PessoaFisica pessoa = new PessoaFisica(Integer.parseInt(campos[1]), campos[2], campos[3], campos[4]);
+                    PessoaFisica pessoa = new PessoaFisica(Integer.parseInt(campos[0]), campos[1], campos[2], campos[3]);
                     pessoas.add(pessoa);
                 } else if (campos[0].equals("1")) {
-                    PessoaJuridica pessoa = new PessoaJuridica(Integer.parseInt(campos[1]), campos[2], campos[3], campos[4]);
+                    PessoaJuridica pessoa = new PessoaJuridica(Integer.parseInt(campos[0]), campos[1], campos[2], campos[3]);
                     pessoas.add(pessoa);
                 }
                 linha = br.readLine();

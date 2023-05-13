@@ -5,7 +5,6 @@
 package View;
 
 import grupo.urna.CriaArq;
-import View.SegundaTela;
 
 
 /**
@@ -13,13 +12,21 @@ import View.SegundaTela;
  * @author Luiz
  */
 public class TerceiraTela extends javax.swing.JFrame {
-
+    
+    private String clienteCC;
     /**
      * Creates new form TerceiraTela
      */
-    public TerceiraTela() {
+    public TerceiraTela(String informacao) {
+        clienteCC = informacao;
         initComponents();
     }
+    private void voltaTela1(){
+        PrimeiraTela pt = new PrimeiraTela();
+        this.setVisible(false);
+        pt.setVisible(true);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,23 +137,32 @@ public class TerceiraTela extends javax.swing.JFrame {
 
     private void btnMSatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMSatisfeitoActionPerformed
         // TODO add your handling code here:
-        //CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC);
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";5\n");
+        this.voltaTela1();
     }//GEN-LAST:event_btnMSatisfeitoActionPerformed
 
     private void btnSatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatisfeitoActionPerformed
         // TODO add your handling code here:
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";4\n");
+        this.voltaTela1();
     }//GEN-LAST:event_btnSatisfeitoActionPerformed
 
     private void btnNeutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNeutroActionPerformed
         // TODO add your handling code here:
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";3\n");
+        this.voltaTela1();
     }//GEN-LAST:event_btnNeutroActionPerformed
 
     private void btnInsatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsatisfeitoActionPerformed
         // TODO add your handling code here:
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";2\n");
+        this.voltaTela1();
     }//GEN-LAST:event_btnInsatisfeitoActionPerformed
 
     private void btnMInsatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMInsatisfeitoActionPerformed
         // TODO add your handling code here:
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";1\n");
+        this.voltaTela1();
     }//GEN-LAST:event_btnMInsatisfeitoActionPerformed
 
     /**
@@ -179,7 +195,7 @@ public class TerceiraTela extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TerceiraTela().setVisible(true);
+                new TerceiraTela("").setVisible(true);
             }
         });
     }

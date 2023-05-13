@@ -4,12 +4,15 @@
  */
 package View;
 
+import grupo.urna.CarregarNotas;
 import grupo.urna.CarregarPessoas;
+import grupo.urna.Notas;
 import grupo.urna.Pessoa;
 import grupo.urna.PessoaFisica;
 import grupo.urna.PessoaJuridica;
 import java.util.List;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -18,6 +21,9 @@ import javax.swing.JOptionPane;
 public class SegundaTela extends javax.swing.JFrame {
     CarregarPessoas carregar = new CarregarPessoas("src\\main\\java\\arqs\\Eleitores.txt");
     List<Pessoa> pessoas = carregar.getPessoas();
+    
+    CarregarNotas carregarN = new CarregarNotas("src\\main\\java\\arqs\\Notas.txt");
+    List<Notas> notas = carregarN.getNotas();
     
     String clienteCC;
     String clienteProtocolo;
@@ -134,26 +140,46 @@ public class SegundaTela extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProtocoloActionPerformed
 
     private void btnVotarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVotarActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:              
         int i = 0;        
         for (Pessoa pessoa : pessoas) {
             if (pessoa instanceof PessoaFisica) {
                 PessoaFisica pf = (PessoaFisica) pessoa;
                 if(txtCC.getText().equals(pf.getCpf()) && txtProtocolo.getText().equals(pf.getProtocolo())){
-                    i = 1;
-                    clienteCC = txtCC.getText();
-                    clienteProtocolo = txtProtocolo.getText();
-                    TerceiraTela tt = new TerceiraTela();
-                    this.setVisible(false);
-                    tt.setVisible(true);
+                    for(Notas nota: notas){
+                        if(txtCC.getText().equals(nota.getCpfCnpj()) && txtProtocolo.getText().equals(nota.getProtocolo())){
+                            JOptionPane.showMessageDialog(this, "Voto já computado!");
+                            i = 1;
+                            break;                            
+                        }
+                    }
+                    if(i == 0){
+                        i = 1;
+                        clienteCC = txtCC.getText();
+                        clienteProtocolo = txtProtocolo.getText();
+                        TerceiraTela tt = new TerceiraTela(clienteCC + ";" + clienteProtocolo);
+                        this.setVisible(false);
+                        tt.setVisible(true);
+                    }
                 }
             } else if (pessoa instanceof PessoaJuridica) {
                 PessoaJuridica pj = (PessoaJuridica) pessoa;
                 if(txtCC.getText().equals(pj.getCnpj()) && txtProtocolo.getText().equals(pj.getProtocolo())){
-                    i = 1;
-                    TerceiraTela tt = new TerceiraTela();
-                    this.setVisible(false);
-                    tt.setVisible(true);
+                    for(Notas nota: notas){
+                        if(txtCC.getText().equals(nota.getCpfCnpj()) && txtProtocolo.getText().equals(nota.getProtocolo())){
+                            JOptionPane.showMessageDialog(this, "Voto já computado!");
+                            i = 1;
+                            break;                            
+                        }
+                    }
+                    if(i == 0){
+                        i = 1;
+                        clienteCC = txtCC.getText();
+                        clienteProtocolo = txtProtocolo.getText();
+                        TerceiraTela tt = new TerceiraTela(clienteCC + ";" + clienteProtocolo);
+                        this.setVisible(false);
+                        tt.setVisible(true);
+                    }
                 }
             }          
         }
@@ -161,14 +187,6 @@ public class SegundaTela extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Protocolo ou Cpf/Cnpj invalidos!");
             i = 0;
         }
-        
-//        if(txtProtocolo.getText().equals("222") && txtCC.getText().equals("222")){
-//           TerceiraTela tt = new TerceiraTela();
-//           this.dispose();
-//           tt.setVisible(true);
-//       }else{
-//           JOptionPane.showMessageDialog(this, "Protoclo invalido!");
-//       }
     }//GEN-LAST:event_btnVotarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed

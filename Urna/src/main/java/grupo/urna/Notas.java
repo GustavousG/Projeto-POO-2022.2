@@ -1,16 +1,16 @@
 package grupo.urna;
 
 public class Notas {
-    private int id;
-    private String nome;
-    public Notas (int id,String nome){
-        this.nome = nome;
-        this.id = id;    
+    private String cpfCnpj;
+    private String protocolo;
+    public Notas (String cpfCnpj,String protocolo ){
+        this.cpfCnpj = cpfCnpj;
+        this.protocolo = protocolo;
     }
-    public String getNome(){
-        return nome;
+    public String getProtocolo(){
+        return protocolo;
     }
-    public int getId(){
-        return id;
+    public String getCpfCnpj(){
+        return cpfCnpj;
     }
 }

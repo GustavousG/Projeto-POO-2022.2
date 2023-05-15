@@ -1,10 +1,6 @@
 package grupo.urna;
 
-/**
- *
- * @author vitic
- */
-public class PessoaFisica extends Pessoa implements Autenticacao{
+public class PessoaFisica extends Pessoa {
 	private String cpf;
 
         public PessoaFisica (int id,String nome, String protocolo,String cpf){
@@ -18,10 +14,6 @@ public class PessoaFisica extends Pessoa implements Autenticacao{
  	 public void setCpf(String cpf) {
     		this.cpf = cpf;
   	}
-	@Override
-	public boolean autentica() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 }

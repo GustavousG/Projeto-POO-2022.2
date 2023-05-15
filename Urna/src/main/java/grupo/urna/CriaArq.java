@@ -16,7 +16,7 @@ import java.io.PrintWriter;
  * @author Luiz
  */
 public class CriaArq {
-    
+    //Método de leitura de arquivo
     public static void lerNotas(String camArq) {
         
         try(

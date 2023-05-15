@@ -4,17 +4,31 @@
  */
 package View;
 
+import grupo.urna.CarregarNotas;
+import grupo.urna.ValidaHash;
+import grupo.urna.ValidaLinha;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Luiz
  */
 public class PrimeiraTela extends javax.swing.JFrame {
+    
+    CarregarNotas carregarN = new CarregarNotas("src\\main\\java\\arqs\\Notas.txt");
+    List<String> salvaNotas = carregarN.getSalvaNotas();
 
     /**
      * Creates new form PrimeiraTela
      */
     public PrimeiraTela() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**
@@ -64,12 +78,12 @@ public class PrimeiraTela extends javax.swing.JFrame {
                     .addComponent(encerrarVot, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(iniciarVotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(resultParcial, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(164, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(iniciarVotacao, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(resultParcial, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -84,14 +98,11 @@ public class PrimeiraTela extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -106,16 +117,70 @@ public class PrimeiraTela extends javax.swing.JFrame {
 
     private void resultParcialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultParcialActionPerformed
         // TODO add your handling code here:
-        MostrarResultadoParcial mrp = new MostrarResultadoParcial();
+        int n1 = 0;
+        int n2 = 0;
+        int n3 = 0;
+        int n4 = 0;
+        int n5 = 0;
+        for(int i = 0; i<salvaNotas.size();i++){
+            switch(Integer.parseInt(salvaNotas.get(i))){
+                case 1:
+                    n1++;
+                    break;
+                case 2:
+                    n2++;
+                    break;
+                case 3:    
+                    n3++;
+                    break;
+                case 4:
+                    n4++;
+                    break;
+                case 5:
+                    n5++;
+                    break;
+            }
+        }
+        MostrarResultadoParcial mrp = new MostrarResultadoParcial(n1, n2, n3, n4, n5);
            this.setVisible(false);
            mrp.setVisible(true);
+           
     }//GEN-LAST:event_resultParcialActionPerformed
 
     private void encerrarVotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_encerrarVotActionPerformed
         // TODO add your handling code here:
-        ResultadoFinal rf = new ResultadoFinal();
-           this.setVisible(false);
-           rf.setVisible(true);
+        int n1 = 0;
+        int n2 = 0;
+        int n3 = 0;
+        int n4 = 0;
+        int n5 = 0;
+        ValidaHash validatorArquivo = new ValidaHash();
+        if(validatorArquivo.ValidaHash("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt")){
+        for(int i = 0; i<salvaNotas.size();i++){
+            switch(Integer.parseInt(salvaNotas.get(i))){
+                case 1:
+                    n1++;
+                    break;
+                case 2:
+                    n2++;
+                    break;
+                case 3:    
+                    n3++;
+                    break;
+                case 4:
+                    n4++;
+                    break;
+                case 5:
+                    n5++;
+                    break;
+            }
+        }
+        ResultadoFinal rf = new ResultadoFinal(n1, n2, n3, n4, n5);
+        this.setVisible(false);
+        rf.setVisible(true);
+        
+        }else JOptionPane.showMessageDialog(this, "Arquivos Comprometidos!!");
+        
     }//GEN-LAST:event_encerrarVotActionPerformed
 
     /**

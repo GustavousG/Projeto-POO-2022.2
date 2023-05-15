@@ -10,6 +10,8 @@ import grupo.urna.Notas;
 import grupo.urna.Pessoa;
 import grupo.urna.PessoaFisica;
 import grupo.urna.PessoaJuridica;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -32,6 +34,9 @@ public class SegundaTela extends javax.swing.JFrame {
      */
     public SegundaTela() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
 
     /**

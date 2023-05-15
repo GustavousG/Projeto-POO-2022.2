@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarregarNotas {
+    //Criação de lista para armazenar os dados da votação
     private List<Notas> notas = new ArrayList<>();
+    private List<String> salvaNotas = new ArrayList<>();
 
     public CarregarNotas(String caminhoArquivo) {
         
@@ -19,6 +21,7 @@ public class CarregarNotas {
             String linha = brn.readLine();
             while (linha != null) {
                 String[] campos = linha.split(";");
+                salvaNotas.add(campos[2]);
                 Notas nota = new Notas(campos[0], campos[1]);
                 notas.add(nota);
                 linha = brn.readLine();
@@ -28,6 +31,9 @@ public class CarregarNotas {
         }
     }
     
+    public List<String> getSalvaNotas(){
+        return salvaNotas;
+    }
     
     public List<Notas> getNotas() {
         return notas;

@@ -5,8 +5,10 @@
 package View;
 
 import grupo.urna.CriaArq;
-
-
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import grupo.urna.GeraHashLinha;
+import grupo.urna.GeraHashArquivo;
 /**
  *
  * @author Luiz
@@ -20,6 +22,9 @@ public class TerceiraTela extends javax.swing.JFrame {
     public TerceiraTela(String informacao) {
         clienteCC = informacao;
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, size.height/2 - getHeight()/2);
     }
     private void voltaTela1(){
         PrimeiraTela pt = new PrimeiraTela();
@@ -135,33 +140,39 @@ public class TerceiraTela extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void btnMSatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMSatisfeitoActionPerformed
         // TODO add your handling code here:
-        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";5\n");
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";5;||"+ GeraHashLinha.geraHashLinha(clienteCC + ";5")+"\n");
+        GeraHashArquivo.gerarHashArquivo("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt");
         this.voltaTela1();
     }//GEN-LAST:event_btnMSatisfeitoActionPerformed
 
     private void btnSatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatisfeitoActionPerformed
         // TODO add your handling code here:
-        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";4\n");
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";4;||"+ GeraHashLinha.geraHashLinha(clienteCC + ";5")+"\n");
+        GeraHashArquivo.gerarHashArquivo("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt");
         this.voltaTela1();
     }//GEN-LAST:event_btnSatisfeitoActionPerformed
 
     private void btnNeutroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNeutroActionPerformed
         // TODO add your handling code here:
-        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";3\n");
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";3;||"+ GeraHashLinha.geraHashLinha(clienteCC + ";5")+"\n");
+        GeraHashArquivo.gerarHashArquivo("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt");
         this.voltaTela1();
     }//GEN-LAST:event_btnNeutroActionPerformed
 
     private void btnInsatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsatisfeitoActionPerformed
         // TODO add your handling code here:
-        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";2\n");
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";2;||"+ GeraHashLinha.geraHashLinha(clienteCC + ";5")+"\n");
+        GeraHashArquivo.gerarHashArquivo("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt");
         this.voltaTela1();
     }//GEN-LAST:event_btnInsatisfeitoActionPerformed
 
     private void btnMInsatisfeitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMInsatisfeitoActionPerformed
         // TODO add your handling code here:
-        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";1\n");
+        CriaArq.salvaNotas("src\\main\\java\\arqs\\Notas.txt", clienteCC + ";1;||"+ GeraHashLinha.geraHashLinha(clienteCC + ";5")+"\n");
+        GeraHashArquivo.gerarHashArquivo("src\\main\\java\\arqs\\Notas.txt", "src\\main\\java\\arqs\\hashNotas.txt");
         this.voltaTela1();
     }//GEN-LAST:event_btnMInsatisfeitoActionPerformed
 

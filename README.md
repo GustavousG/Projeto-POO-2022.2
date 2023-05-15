@@ -1,9 +1,10 @@
 # Projeto-POO-2022.2 - Urna Eletrônica
 
-Nosso projeto de Urna Eletrônica é baseado nos sistemas de avaliação de atendimento presentes em diversas empresas prestadoras de serviço, 
-basicamente o cliente, seja ele físico ou jurídico, ao final da compra recebe um numero de protocolo que será utilizado para acessar o sistema a fim de avaliar o seu atendimento.
+## Descrição: <h3>
+Nosso projeto de Urna Eletrônica é baseado nos sistemas de avaliação de atendimento presentes em diversas empresas prestadoras de serviço. 
+Basicamente o cliente, seja ele físico ou jurídico, ao final da compra recebe um numero de protocolo que será utilizado para acessar o sistema a fim de avaliar o seu atendimento.
 
-Como funciona:
+## Como funciona: <h3>
 Na primeira tela o usuário tem três opções:
 Votar - O usuário primeiro passa por uma validação utilizando o numero de protocolo e o seu Cpf/Cnpj, 
 caso todas as informações estejam corretas e caso o usuário não tenha votado ainda, 
@@ -46,3 +47,9 @@ Protocolo     | Cpf/Cnpj
 Mostrar Resultado Parcial - Como o próprio nome já indica, esse botão mostra os votos  já computados.
 
 Finalizar - Encerra a votação e mostra o resultado final.
+
+## Especificações: <h3>
+-Versão do Java- 17
+  
+-IDE- NetBeans
+
